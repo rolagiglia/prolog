@@ -1,0 +1,25 @@
+fibonacci(1,1).
+fibonacci(2,1).
+
+
+fibonacci(N,Resultado):- N > 0,
+    			N1 is N - 1,
+    			N2 is N - 2,
+    			N2 >= 0,
+    			fibonacci(N1, Parcial1),
+    			fibonacci(N2, Parcial2),
+				Resultado is Parcial1 + Parcial2.
+
+
+%TAIL RECURTION - OPTIMIZACION DE RECURSIVIDAD %
+
+fib2(0,0).
+fib2(N,Valor):-
+    fib2(N,Valor,_).
+
+fib2(1,1,0).
+fib2(N, Valor, Parcial1):-
+    N > 1,
+    N1 is N - 1,
+    fib2(N1, Parcial1, Parcial2),
+    Valor is Parcial1 + Parcial2.
